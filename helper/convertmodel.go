@@ -7,27 +7,27 @@ import (
 	"github.com/Alfeenn/article/model/web"
 )
 
-func ConvertModel(req model.Article) web.CatResp {
+func ConvertModel(req model.User) web.CatResp {
 
-	categoryslice := GetCategoryObj(req)
-	slugname := DashString(req.Name)
+	// categoryslice := GetCategoryObject(req)
+	// slugname := DashString(req.Email)
 
 	return web.CatResp{
-		Id:         req.Id,
-		Name:       req.Name,
-		Slug:       slugname,
-		Category:   categoryslice,
-		Status:     req.Status,
-		Visibility: req.Visibility,
+		Id:        req.Id,
+		Email:     req.Email,
+		Password:  req.Password,
+		Role:      req.Role,
+		CreatedAt: req.CreatedAt,
+		UpdatedAt: req.UpdatedAt,
 	}
 }
 
-func GetCategoryObj(req model.Article) []model.CategoryArticle {
-
+func GetCategoryObject(req model.User) []model.CategoryArticle {
+	//get category object then slug category
 	var sliceCategory []model.CategoryArticle
 	categoryArticle := model.CategoryArticle{
-		Name: req.Category,
-		Url:  req.Url,
+		Name: req.Email,
+		Url:  req.Password,
 	}
 
 	catName := LowerAndDash(categoryArticle.Name)

@@ -8,9 +8,9 @@ import (
 )
 
 type Repository interface {
-	Create(ctx context.Context, tx *sql.Tx, category model.Article) model.Article
-	Update(ctx context.Context, tx *sql.Tx, category model.Article) model.Article
+	Create(ctx context.Context, tx *sql.Tx, category model.User) model.User
+	Update(ctx context.Context, tx *sql.Tx, category model.User) model.User
 	Delete(ctx context.Context, tx *sql.Tx, id string)
-	FindAll(ctx context.Context, tx *sql.Tx) []model.Article
-	Find(ctx context.Context, tx *sql.Tx, id string) (model.Article, error)
+	FindAll(ctx context.Context, tx *sql.Tx) []model.User
+	Find(ctx context.Context, tx *sql.Tx, id string) (model.User, error)
 }

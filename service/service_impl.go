@@ -27,17 +27,18 @@ func (s *ServiceImpl) Create(ctx context.Context, req web.CatRequest) web.CatRes
 	helper.PanicIfErr(err)
 	defer helper.CommitorRollback(tx)
 
-	request := model.Article{
-		Id:         req.Id,
-		Name:       req.Name,
-		Status:     req.Status,
-		Visibility: req.Visibility,
-		Details:    req.Details,
+	request := model.User{
+		Id:        req.Id,
+		Email:     req.Name,
+		Password:  req.Status,
+		Role:      req.Visibility,
+		CreatedAt: req.Details,
+		UpdatedAt: req.Details,
 	}
 
-	article := s.Rep.Create(ctx, tx, request)
+	User := s.Rep.Create(ctx, tx, request)
 
-	return helper.ConvertModel(article)
+	return helper.ConvertModel(User)
 
 }
 
